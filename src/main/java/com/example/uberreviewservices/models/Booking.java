@@ -32,4 +32,10 @@ public class Booking extends BaseModel{
     private Date endingTime;
 
     private Long totalDistance;
+
+    @ManyToOne      //spring is confused between one to many and many to many
+    private Driver driver;    //if one side has one to many then other has many to one
+
+    @ManyToOne
+    private Passengers passenger;
 }
