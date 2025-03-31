@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
 
@@ -12,6 +13,7 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table(name="bookingreview")    //to give custom name
 //we have same property in enetity but does we choose to add another annotation rather than using entity only
@@ -36,5 +38,10 @@ public class Review {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate        //thi annotation tells spring to handle when last modifies
     private Date updatedAt;
+
+    @Override
+    public String toString() {
+        return "Review: " + this.content + " " + this.rating + " " + this.creaedAt;
+    }
 
 }
