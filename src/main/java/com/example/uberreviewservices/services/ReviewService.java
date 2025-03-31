@@ -23,12 +23,13 @@ public class ReviewService implements CommandLineRunner {
         System.out.println("*******************");
         Review r = Review.builder()
                 .content("Amazing Ride Quality")
-                .creaedAt(new Date())
+                .createdAt(new Date())
                 .updatedAt(new Date())
                 .rating(5.0)
                 .build();
         System.out.println(r);
         reviewRepository.save(r);  // this code executes sql query
+        System.out.println(r.getId());
 
         List<Review> reviews = reviewRepository.findAll();
 
