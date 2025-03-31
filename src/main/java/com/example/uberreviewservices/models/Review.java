@@ -14,7 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="bookingreview")    //to give custom name
+@Table(name="booking_review")    //to give custom name
+@Inheritance(strategy = InheritanceType.JOINED)
 //we have same property in entity but does we choose to add another annotation rather than using entity only
 //table annotation just changes name in database but entity works on java logic
 public class Review extends BaseModel {
