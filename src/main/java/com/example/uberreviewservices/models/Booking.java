@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class Booking extends BaseModel{
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})     //will generate a foreign key review_id
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE} , fetch = FetchType.LAZY)     //will generate a foreign key review_id
     //cascade type will automatically save review while saving booking
     //remove says if the booking is deleted all associated will be removed as well
     // in one to one one table has id of other table
