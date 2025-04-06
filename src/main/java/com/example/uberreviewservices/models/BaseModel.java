@@ -27,6 +27,6 @@ public abstract class BaseModel {
 
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate        //thi annotation tells spring to handle when last modifies
+    @LastModifiedDate        //this annotation tells spring to handle when last modifies
     protected Date updatedAt;
 }

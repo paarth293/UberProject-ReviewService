@@ -30,9 +30,9 @@ public class Driver extends BaseModel{
     private String licenseNumber;
 
     // 1 to many association
-    @OneToMany(mappedBy = "driver" , fetch = FetchType.LAZY)      //when we were not usng mapped by property extra table was creating
+    @OneToMany(mappedBy = "driver" , fetch = FetchType.LAZY)      //when we were not using mapped by property extra table was creating
 
     @Fetch(value = FetchMode.SUBSELECT)
-    private Set<Booking> bookings = new HashSet<>();
+    private Set<Booking> bookings = new HashSet<>();        //for N+1 problems
 
 }
