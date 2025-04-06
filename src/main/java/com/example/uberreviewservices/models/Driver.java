@@ -5,9 +5,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,6 +29,8 @@ public class Driver extends BaseModel{
 
     // 1 to many association
     @OneToMany(mappedBy = "driver" , fetch = FetchType.LAZY)      //when we were not usng mapped by property extra table was creating
-    private List<Booking> bookings = new ArrayList<>();
+
+    @Fetch(value = FetchMode.SUBSELECT)
+    private Set<Booking> bookings = new HashSet<>();
 
 }

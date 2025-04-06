@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ReviewService implements CommandLineRunner {
@@ -71,7 +69,15 @@ public class ReviewService implements CommandLineRunner {
 //        }
         //if we fetch only driver details and later on we want to fetch booking details we can fetch by creating an object and storing in a list and hence printing it
 
-        Optional<Driver> d = DriverRepository.rawfindByIdandLAndLicenseNumber(values);
-        System.out.println(d.get().getName());
+        List<Long> driver_ids = new ArrayList<>(Arrays.asList(1L, 2L, 3L));
+        List<Driver> drivers = driverReposiory.findallByIdIn(driver_ids);
+
+        //List<Booking> bookings = driverRepository.findallByIdIn(drivers);
+
+        for (Driver driver : drivers) {
+            System.out.println(driver.getBookings().size());
+            final Set<Booking> bookings = driver.getBookings();
+            bookings.forEach(booking -> System.out.println(booking.getId()));
+        }
     }
 }
