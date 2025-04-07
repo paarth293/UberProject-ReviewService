@@ -33,9 +33,9 @@ class custom {
     public Passengers passenger;
     public Driver driver;
 
-    public custom(Review review, Passengers passeger, Driver driver) {
+    public custom(Review review, Passengers passenger, Driver driver) {
         this.driver = driver;
         this.review = review;
-        this.passenger = passeger;
+        this.passenger = passenger;
     }
 }
